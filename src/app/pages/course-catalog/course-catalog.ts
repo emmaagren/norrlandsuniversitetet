@@ -25,6 +25,9 @@ export class CourseCatalog {
   // Lagrar vilket ämne användaren har valt
   selectedSubject = signal('');
 
+  // Lagrar vilket fält kurserna ska sorteras efter
+  sortBy = signal<'courseCode' | 'courseName' | 'points' | 'subject'>('courseCode');
+
   // Skapar en alfabetiskt sorterad lista över alla ämnen
   subjects = computed(() => {
     const allSubjects = this.courses().map(course => course.subject);
@@ -34,13 +37,14 @@ export class CourseCatalog {
     );
   });
 
-
-  // Filtrerar kurser efter sökfras och valt ämne
+  // Filtrerar och sorterar kurserna
   filteredCourses = computed(() => {
     const search = this.searchTerm().toLowerCase().trim();
     const subject = this.selectedSubject();
+    const sortBy = this.sortBy();
 
-    return this.courses().filter(course => {
+    // Filtrerar kurser efter sökfras och ämne
+    const filtered = this.courses().filter(course => {
       const matchesSearch =
         course.courseCode.toLowerCase().includes(search) ||
         course.courseName.toLowerCase().includes(search);
@@ -49,6 +53,15 @@ export class CourseCatalog {
         subject === '' || course.subject === subject;
 
       return matchesSearch && matchesSubject;
+    });
+
+    // Sorterar kurserna efter valt fält
+    return filtered.sort((a, b) => {
+      if (sortBy === 'points') {
+        return a.points - b.points;
+      }
+
+      return a[sortBy].localeCompare(b[sortBy], 'sv');
     });
   });
 
@@ -64,4 +77,12 @@ export class CourseCatalog {
     this.selectedSubject.set(select.value);
   }
 
+  // Uppdaterar sorteringen
+  updateSort(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+
+    this.sortBy.set(
+      select.value as 'courseCode' | 'courseName' | 'points' | 'subject'
+    );
+  }
 }

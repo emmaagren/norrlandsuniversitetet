@@ -29,6 +29,23 @@
     </select>
   </div>
 
+  <!-- Sortering av kurser -->
+  <div class="sort">
+    <label for="sort">Sortera efter</label>
+
+    <select id="sort" [value]="sortBy()" (change)="updateSort($event)">
+      <option value="courseCode">Kurskod</option>
+      <option value="courseName">Kursnamn</option>
+      <option value="points">Högskolepoäng</option>
+      <option value="subject">Ämne</option>
+    </select>
+  </div>
+
+  <!-- Visar antal kurser som matchar sökning och filtrering -->
+  <p class="course-count" aria-live="polite">
+    Visar {{ filteredCourses().length }} av {{ courses().length }} kurser
+  </p>
+
   <!-- Tabell med tillgängliga kurser -->
   <div class="table-container">
     <table>
