@@ -1,1 +1,61 @@
-<p>course-catalog works!</p>
+<!-- Sektion för kurskatalogen -->
+<section class="course-catalog">
+
+  <h2>Utforska våra kurser</h2>
+
+  <p>
+    Här hittar du NorrlandsUniversitetets kursutbud.
+    Utforska kurserna och skapa ditt eget ramschema.
+  </p>
+
+  <!-- Sökfält för kurskatalogen -->
+  <div class="search">
+    <label for="search">Sök efter kurs</label>
+
+    <input type="search" id="search" placeholder="Sök på kurskod eller kursnamn" [value]="searchTerm()"
+      (input)="updateSearch($event)">
+  </div>
+
+  <!-- Filtrering efter ämne -->
+  <div class="subject-filter">
+    <label for="subject">Välj ämne</label>
+
+    <select id="subject" [value]="selectedSubject()" (change)="updateSubject($event)">
+      <option value="">Alla ämnen</option>
+
+      @for (subject of subjects(); track subject) {
+      <option [value]="subject">{{ subject }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Tabell med tillgängliga kurser -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Kurskod</th>
+          <th scope="col">Kursnamn</th>
+          <th scope="col">Poäng</th>
+          <th scope="col">Ämne</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (course of filteredCourses(); track $index) {
+        <tr>
+          <td>{{ course.courseCode }}</td>
+          <td>{{ course.courseName }}</td>
+          <td>{{ course.points }} hp</td>
+          <td>{{ course.subject }}</td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="4">Inga kurser att visa.</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+</section>
