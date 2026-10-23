@@ -55,20 +55,24 @@
           <th scope="col">Kursnamn</th>
           <th scope="col">Poäng</th>
           <th scope="col">Ämne</th>
+          <th scope="col">Ramschema</th>
         </tr>
       </thead>
 
       <tbody>
         @for (course of filteredCourses(); track $index) {
         <tr>
-          <td>{{ course.courseCode }}</td>
-          <td>{{ course.courseName }}</td>
           <td>{{ course.points }} hp</td>
           <td>{{ course.subject }}</td>
+          <td>
+            <button type="button" (click)="addToSchedule(course)">
+              Lägg till
+            </button>
+          </td>
         </tr>
         } @empty {
         <tr>
-          <td colspan="4">Inga kurser att visa.</td>
+          <td colspan="5">Inga kurser att visa.</td>
         </tr>
         }
       </tbody>

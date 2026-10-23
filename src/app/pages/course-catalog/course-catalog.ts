@@ -2,6 +2,7 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CourseService } from '../../services/course';
 import type { Course } from '../../models/course';
+import { ScheduleStorageService } from '../../services/schedule-storage';
 
 @Component({
   selector: 'app-course-catalog',
@@ -13,6 +14,9 @@ export class CourseCatalog {
 
   // Hämtar kursservicen
   private courseService = inject(CourseService);
+
+  // Hämtar servicen som hanterar användarens ramschema
+  private scheduleService = inject(ScheduleStorageService);
 
   // Hämtar kurserna från JSON-filen
   courses = toSignal(this.courseService.getCourses(), {
@@ -84,5 +88,15 @@ export class CourseCatalog {
     this.sortBy.set(
       select.value as 'courseCode' | 'courseName' | 'points' | 'subject'
     );
+  }
+  // Lägger till en kurs i användarens ramschema
+  addToSchedule(course: Course): void {
+    const added = this.scheduleService.addCourse(course);
+
+    if (added) {
+      alert('Kursen har lagts till i ditt ramschema!');
+    } else {
+      alert('Kursen finns redan i ditt ramschema.');
+    }
   }
 }
