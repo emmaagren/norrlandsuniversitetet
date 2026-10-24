@@ -1,1 +1,58 @@
-<p>schedule works!</p>
+<!-- Användarens personliga ramschema -->
+<section class="schedule">
+
+    <h2>Mitt ramschema</h2>
+
+    <p>
+        Här hittar du kurserna du har valt från kurskatalogen.
+        Du kan lägga till fler kurser eller ta bort kurser du inte längre vill läsa.
+    </p>
+
+    <!-- Visar kurser om ramschemat inte är tomt -->
+    @if (courses().length > 0) {
+
+    <p class="total-points">
+        Totalt antal högskolepoäng:
+        <strong>{{ totalPoints() }} hp</strong>
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Kurskod</th>
+                    <th scope="col">Kursnamn</th>
+                    <th scope="col">Poäng</th>
+                    <th scope="col">Ämne</th>
+                    <th scope="col">Åtgärd</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (course of courses(); track course.courseCode) {
+                <tr>
+                    <td>{{ course.courseCode }}</td>
+                    <td>{{ course.courseName }}</td>
+                    <td>{{ course.points }} hp</td>
+                    <td>{{ course.subject }}</td>
+                    <td>
+                        <button type="button" (click)="removeCourse(course.courseCode)">
+                            Ta bort
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    } @else {
+
+    <!-- Visas när användaren inte har valt några kurser -->
+    <p class="empty-schedule">
+        Ditt ramschema är tomt. Gå till kurskatalogen och lägg till kurser!
+    </p>
+
+    }
+
+</section>
