@@ -32,6 +32,12 @@ export class CourseCatalog {
   // Lagrar vilket fält kurserna ska sorteras efter
   sortBy = signal<'courseCode' | 'courseName' | 'points' | 'subject'>('courseCode');
 
+  // Aktuell sida i kurskatalogen
+  currentPage = signal(1);
+
+  // Antal kurser som visas per sida
+  pageSize = 25;
+
   // Skapar en alfabetiskt sorterad lista över alla ämnen
   subjects = computed(() => {
     const allSubjects = this.courses().map(course => course.subject);
@@ -69,26 +75,58 @@ export class CourseCatalog {
     });
   });
 
+  // Beräknar hur många sidor som behövs
+  totalPages = computed(() =>
+    Math.ceil(this.filteredCourses().length / this.pageSize)
+  );
+
+  // Hämtar kurserna som ska visas på aktuell sida
+  paginatedCourses = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize;
+
+    return this.filteredCourses().slice(
+      start,
+      start + this.pageSize
+    );
+  });
+
+  // Går till föregående sida
+  previousPage(): void {
+    if (this.currentPage() > 1) {
+      this.currentPage.update(page => page - 1);
+    }
+  }
+
+  // Går till nästa sida
+  nextPage(): void {
+    if (this.currentPage() < this.totalPages()) {
+      this.currentPage.update(page => page + 1);
+    }
+  }
+
   // Uppdaterar sökfrasen när användaren skriver
   updateSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.searchTerm.set(input.value);
+    this.currentPage.set(1);
   }
 
   // Uppdaterar valt ämne
   updateSubject(event: Event): void {
     const select = event.target as HTMLSelectElement;
     this.selectedSubject.set(select.value);
+    this.currentPage.set(1);
   }
 
   // Uppdaterar sorteringen
   updateSort(event: Event): void {
     const select = event.target as HTMLSelectElement;
-
+    this.currentPage.set(1);
     this.sortBy.set(
       select.value as 'courseCode' | 'courseName' | 'points' | 'subject'
     );
   }
+  
   // Lägger till en kurs i användarens ramschema
   addToSchedule(course: Course): void {
     const added = this.scheduleService.addCourse(course);

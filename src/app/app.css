@@ -1,0 +1,55 @@
+/* Sidhuvud */
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 2.5rem 1.5rem 1.5rem;
+    text-align: center;
+    border-bottom: 5px solid var(--accent);
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.03em;
+}
+
+header p {
+    margin: 0.5rem 0 1.5rem;
+    color: #e2e9e1;
+    font-size: 1.1rem;
+}
+
+/* Sidans huvudinnehåll */
+main {
+    width: min(100% - 2rem, 1200px);
+    margin: 3rem auto;
+    min-height: 50vh;
+}
+
+/* Sidfot */
+footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Anpassning för mindre skärmar */
+@media (max-width: 600px) {
+    header {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    main {
+        margin: 1.5rem auto;
+    }
+}

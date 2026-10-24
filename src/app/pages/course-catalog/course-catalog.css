@@ -1,0 +1,157 @@
+/* Kurskatalog */
+.course-catalog {
+    width: 100%;
+}
+
+.course-catalog h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.course-catalog>p {
+    color: var(--text-light);
+}
+
+/* Sökfält och filter */
+.search,
+.subject-filter,
+.sort {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 1.5rem 1rem 1rem 0;
+}
+
+.search {
+    width: min(100%, 320px);
+}
+
+.subject-filter,
+.sort {
+    width: min(100%, 220px);
+}
+
+.search label,
+.subject-filter label,
+.sort label {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.search input,
+.subject-filter select,
+.sort select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+/* Antal sökträffar */
+.course-count {
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+/* Tabell */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--primary);
+    color: white;
+}
+
+th,
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5f7f3;
+}
+
+tbody tr:hover {
+    background-color: #eaf0e9;
+}
+
+/* Knappar */
+td button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+td button:hover {
+    background-color: var(--primary-light);
+}
+
+/* Mobilanpassning */
+@media (max-width: 600px) {
+
+    .search,
+    .subject-filter,
+    .sort {
+        display: flex;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    th,
+    td {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Sidindelning */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: var(--primary-light);
+}
+
+.pagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-weight: 600;
+}

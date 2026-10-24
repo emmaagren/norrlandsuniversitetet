@@ -1,0 +1,35 @@
+/* Huvudnavigation */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem 1.3rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover och aktiv sida */
+nav a:hover,
+nav a.active {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+/* Mobilanpassning */
+@media (max-width: 600px) {
+    nav {
+        gap: 0.5rem;
+    }
+
+    nav a {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.9rem;
+    }
+}

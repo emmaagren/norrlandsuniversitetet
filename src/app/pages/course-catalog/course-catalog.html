@@ -60,7 +60,7 @@
       </thead>
 
       <tbody>
-        @for (course of filteredCourses(); track $index) {
+        @for (course of paginatedCourses(); track $index) {
         <tr>
           <td>{{ course.points }} hp</td>
           <td>{{ course.subject }}</td>
@@ -78,5 +78,22 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Sidindelning för kurskatalogen -->
+  @if (totalPages() > 1) {
+  <nav class="pagination" aria-label="Sidindelning">
+    <button type="button" (click)="previousPage()" [disabled]="currentPage() === 1">
+      Föregående
+    </button>
+
+    <span>
+      Sida {{ currentPage() }} av {{ totalPages() }}
+    </span>
+
+    <button type="button" (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+      Nästa
+    </button>
+  </nav>
+  }
 
 </section>

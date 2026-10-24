@@ -1,0 +1,105 @@
+/* Ramschemasidan */
+.schedule {
+    width: 100%;
+}
+
+.schedule h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.schedule>p {
+    color: var(--text-light);
+}
+
+/* Sammanlagda högskolepoäng */
+.total-points {
+    display: inline-block;
+    background-color: #eaf0e9;
+    border-left: 5px solid var(--accent);
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+}
+
+.total-points strong {
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+
+/* Tabell */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--primary);
+    color: white;
+}
+
+th,
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5f7f3;
+}
+
+tbody tr:hover {
+    background-color: #eaf0e9;
+}
+
+/* Knapp för att ta bort kurser */
+td button {
+    background-color: #8c3b35;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+td button:hover {
+    background-color: #6f2e29;
+}
+
+/* Meddelande när ramschemat är tomt */
+.empty-schedule {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Mobilanpassning */
+@media (max-width: 600px) {
+
+    th,
+    td {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .total-points {
+        display: block;
+        font-size: 1rem;
+    }
+}
