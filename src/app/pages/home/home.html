@@ -1,0 +1,136 @@
+<!-- Startsida för NorrlandsUniversitetet -->
+<section class="welcome">
+
+    <div class="welcome-content">
+        <span class="eyebrow">Välkommen till NorrlandsUniversitetet</span>
+
+        <h2>Kunskap som växer med dig</h2>
+
+        <p>
+            Upptäck nya möjligheter och forma din framtid hos oss.
+            På NorrlandsUniversitetet hittar du kurser inom många olika
+            ämnesområden och kan enkelt planera din egen utbildning.
+        </p>
+
+        <div class="welcome-buttons">
+            <a routerLink="/kurser" class="btn-primary">
+                Utforska våra kurser
+            </a>
+
+            <a routerLink="/mitt-ramschema" class="btn-secondary">
+                Mitt ramschema
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<!-- Presentation av universitetet -->
+<section class="about-university">
+
+    <div class="about-content">
+        <span class="eyebrow">Upptäck NorrlandsUniversitetet</span>
+
+        <h2>Studera hos oss</h2>
+
+        <p>
+            På NorrlandsUniversitetet möts kunskap, nyfikenhet
+            och framtidstro. Här får du möjlighet att utveckla
+            dina intressen och utforska nya ämnesområden.
+        </p>
+
+        <p>
+            Oavsett om du vill fördjupa dina kunskaper eller
+            upptäcka något helt nytt kan du hitta kurser som
+            passar just dina mål.
+        </p>
+
+        <a routerLink="/kurser" class="btn-primary">
+            Hitta din kurs
+        </a>
+    </div>
+
+    <div class="about-image">
+        <img src="/campus.webp" alt="Modern universitetsbyggnad med glasfasad och grönska" loading="lazy" width="1200"
+            height="800">
+    </div>
+
+</section>
+
+<!-- Statistik över universitetets kursutbud -->
+<section class="course-statistics">
+
+    <div class="statistics-heading">
+        <span class="eyebrow">Möjligheter att utvecklas</span>
+
+        <h2>Upptäck vårt kursutbud</h2>
+
+        <p>
+            Utforska vårt breda utbud av kurser och hitta
+            nya möjligheter att utveckla dina kunskaper.
+        </p>
+    </div>
+
+    <div class="statistics-grid">
+
+        <!-- Antal tillgängliga kurser -->
+        <div class="stat-card">
+            <span class="stat-number">{{ totalCourses() }}</span>
+            <h3>Tillgängliga kurser</h3>
+            <p>Hitta kurser som passar dina intressen.</p>
+        </div>
+
+        <!-- Antal ämnesområden -->
+        <div class="stat-card">
+            <span class="stat-number">{{ totalSubjects() }}</span>
+            <h3>Ämnesområden</h3>
+            <p>Upptäck nya kunskapsområden.</p>
+        </div>
+
+        <!-- Antal kurser i användarens ramschema -->
+        <div class="stat-card">
+            <span class="stat-number">{{ selectedCourses() }}</span>
+            <h3>Kurser i ditt ramschema</h3>
+            <p>Bygg din egen utbildning utifrån dina mål.</p>
+        </div>
+
+    </div>
+
+    <div class="statistics-link">
+        <a routerLink="/kurser" class="btn-primary">
+            Se alla kurser
+        </a>
+    </div>
+
+</section>
+
+<!-- Sektion för att planera sina studier -->
+<section class="study-planning">
+
+    <div class="planning-image">
+        <img src="/students.webp" alt="Två studenter som samarbetar framför en datorskärm" loading="lazy" width="1200"
+            height="800">
+    </div>
+
+    <div class="planning-content">
+        <span class="eyebrow">Din utbildning, dina möjligheter</span>
+
+        <h2>Planera dina studier</h2>
+
+        <p>
+            Skapa din egen studieväg genom att välja bland våra
+            kurser och samla dem i ett personligt ramschema.
+        </p>
+
+        <p>
+            Lägg till kurser som intresserar dig, se hur många
+            högskolepoäng du har valt och anpassa din planering
+            efter dina mål.
+        </p>
+
+        <a routerLink="/mitt-ramschema" class="btn-primary">
+            Visa mitt ramschema
+        </a>
+    </div>
+
+</section>
