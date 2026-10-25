@@ -37,19 +37,6 @@ main {
     min-height: 50vh;
 }
 
-/* Sidfot */
-footer {
-    background-color: var(--primary);
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 3rem;
-}
-
-footer p {
-    margin: 0;
-}
-
 /* Anpassning för mindre skärmar */
 @media (max-width: 600px) {
     header {
@@ -62,5 +49,86 @@ footer p {
 
     main {
         margin: 1.5rem auto;
+    }
+}
+
+/* Sidfot */
+footer {
+    background-color: var(--primary);
+    color: white;
+    padding: 3rem 1.5rem 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+}
+
+.footer-info {
+    max-width: 450px;
+}
+
+.footer-info h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
+}
+
+.footer-info p {
+    color: #e2e9e1;
+    line-height: 1.7;
+    margin: 0.4rem 0;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-nav a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #e2e9e1;
+    font-size: 0.9rem;
+}
+
+/* Anpassning av sidfoten för mobil */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-nav {
+        gap: 0.8rem;
+    }
+
+    footer {
+        padding: 2.5rem 1rem 1.5rem;
     }
 }
