@@ -32,6 +32,16 @@ https://norrlandsuniversitetet.netlify.app/
 - Automatisk beräkning av totalt antal högskolepoäng.
 - Sparar kursval i webbläsarens localStorage så att de finns kvar efter omladdning.
 
+## Extrafunktioner
+I projektet har jag satsat på ett **överbetyg** genom att implementera ytterligare funktionalitet utöver grundkraven.
+
+Följande extrafunktioner har utvecklats:
+
+- **Sidindelning i kurskatalogen:** Kurserna visas med 25 kurser per sida, med möjlighet att navigera mellan sidorna.
+- **Dynamisk statistik:** Startsidan visar antalet kurser, antalet ämnesområden och hur många kurser användaren har lagt till i sitt ramschema.
+- **Utökad startsida:** En separat startsida har skapats med information om det fiktiva universitetet, bilder och länkar till webbplatsens funktioner.
+- **Förbättrad användarupplevelse:** Kurskatalogen visar antalet sökträffar och uppdateras automatiskt när användaren söker, filtrerar eller sorterar.
+  
 ## Tekniker
 
 - Angular
